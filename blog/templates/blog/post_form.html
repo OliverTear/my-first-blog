@@ -47,10 +47,15 @@
             if (v0 == ""){                
                 return;
             }
-            var url = '/serch/' + v0 + "/"; // リクエスト先URL
-            const request = new XMLHttpRequest();
-            request.open('GET', url);
-            request.send(null);
+            var url = '/serch/' + v0 + "/"; // リクエスト先URL                   
+            try{                    
+                const request = new XMLHttpRequest();
+                request.open('GET', url);
+                request.send(null);
+            }catch(error){
+                document.getElementById("serch-warn").textContent = "見つかりませんでした";
+                return;
+            }
             request.onreadystatechange = function () {
                 if (request.readyState != 4) {
                     // リクエスト中
