@@ -1,9 +1,6 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-import requests
-import json
-import PIL
 from . import globalvalue as g
 category = (
     (0,"指定なし"),
