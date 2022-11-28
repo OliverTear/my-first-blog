@@ -130,8 +130,7 @@ def top(request):
 def index(request: HttpRequest) -> HttpResponse:
     return render(
         request,
-        'blog/login.html',
-       
+        'blog/login.html'
     )
 
 
