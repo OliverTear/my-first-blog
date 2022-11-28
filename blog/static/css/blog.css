@@ -4,6 +4,8 @@ h1 a, h2 a {
 }
 body {
     padding-left: 15px;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 .page-header {
     background-color: #C25100;
@@ -50,4 +52,191 @@ h1, h2, h3, h4 {
 
 .post h2 a, .post h2 a:visited {
     color: #000000;
+}
+
+  ul{
+    font-size: 15pt;
+    display: flex;
+    width: 250%;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Kaisei Opti', serif;
+  }
+  li{
+    list-style: none;
+    margin-left: 20px;
+  }
+
+.bookshelflist {
+    font-size: 30pt;
+    color: #f0f8ff;
+    font-family: 'Kaisei Opti', serif;
+}
+
+.mybookself{
+    text-align:left;
+    font-family: 'Kaisei Opti', serif;
+}
+.login_form_body {
+    background-color: #808080;
+  }
+  
+  .loginform {
+    margin: auto;
+    width: 400px;
+    padding: 40px 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #000;
+    text-align: center;
+  }
+  .loginform_header{
+    background-color: #C25100;
+  }
+  
+  form h1 {
+    color: white;
+    font-weight: 500;
+  }
+  
+  .loginform p {
+    font-size: 10px;
+  }
+  
+  form input[type = "username"],form input[type = "password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #5326e8;
+    padding: 15px 10px;
+    width: 200px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+    text-align: center;
+    text-decoration-color: #f0f8ff;
+    background-color: #f0f8ff;
+  }
+  
+  form input[type = "username"]:focus,form input[type = "password"]:focus {
+    width: 280px;
+    background-color: #f0f8ff;
+  }
+  
+  .loginbutton{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid #f0f8ff;
+    padding: 15px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    transition: 0.25s;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .loginbutton:hover {
+    background-color: #5326e8;
+    border: 2px solid #5326e8;
+  }
+  .username,.password {
+    color: #f0f8ff;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+.reg{
+    border: 0;
+    background: none;
+    display: block;
+    margin: auto;
+    border: 2px solid #f0f8ff;
+    padding: 10px 0px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 25px;
+    transition: 0.25s;
+    text-align: center;
+    cursor: pointer;
+    border: 3px solid #f0f8ff;
+    background-color:#000;
+    bottom: 500pt;
+}
+.reg:hover {
+    background-color:#000;
+    border: 2px solid #000;
+  }
+.regreg{
+    text-align:left;
+    position: absolute;
+    top: 85%;
+    left: 43.5%;
+}
+.registerform {
+  margin: auto;
+  width: 400px;
+  padding: 40px 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #000;
+  text-align: center;
+}
+.bg {
+  text-align:  center;    /* 文字中央寄せ */
+  padding:  400px;        /* 余白指定 */
+  border: solid 2px;      /* 枠線指定 */
+  background-image: url(publicdomainq-0010772zan.jpg);
+  background-size:contain;
+}
+.toppage, .list2 {
+  text-align: left;    /* 文字中央寄せ */
+  padding:  30px 50px;         /* 余白指定 */
+  border: solid 2px;      /* 枠線指定 */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(publicdomainq-0067139.jpg);
+  background-size: 25%;
+  color: #f0f8ff;
+  font-family: 'Kaisei Opti', serif;
+  width: 250%;
+}
+.list2 a , .list2 h3{
+  font-size:30pt;
+  color: #000000;
+  font-family: 'Kaisei Opti', serif;
+}
+.list{
+  margin:0;
+  padding:0;
+}
+.detail{
+  text-align: left;    /* 文字中央寄せ */
+  padding:  30px 50px;         /* 余白指定 */
+  border: solid 2px;      /* 枠線指定 */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(publicdomainq-0067139.jpg);
+  background-size: 25%;
+  color: #000000;
+  font-family: 'Kaisei Opti', serif;
+  width: 250%;
+}
+.detail h1, h2, h3{
+  font-family: 'Kaisei Opti', serif;
+}
+.bookform{
+  text-align: left;    /* 文字左寄せ */
+  padding:  30px 50px;         /* 余白指定 */
+  border: solid 2px;      /* 枠線指定 */
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%), url(publicdomainq-0067139.jpg);
+  background-size: 25%;
+  color: #000000;
+  font-family: 'Kaisei Opti', serif;
+  width: 250%;
+}
+.bookform h2{
+  font-family: 'Kaisei Opti', serif;
 }

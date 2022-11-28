@@ -1,13 +1,18 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 {% extends 'blog/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
+<h2  class = "bookshelflist">{{username}}の本棚一覧</h2><hr>
+<div class = "list">
+{% for i in book %}
+<div class = list2>
+  <a href="/detail/{{ i.pk }}/">
+    <h3>{{ i }}</h3>
+      カテゴリ:{{ i.get_cat_display }}
+  </a><hr>
+</div>
+{% endfor %}
+</div><br>
 {% endblock %}

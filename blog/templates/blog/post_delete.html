@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h1>{{ bookshelf.title }}</h1>
+<p>カテゴリ:{{ bookshelf.get_cat_display }}</p>
+<p>制作者:{{ bookshelf.name }}</p>
+<hr>
+<h2>本一覧</h2><br>
+{% for book in books %}
+    <h3>{{ book.title }}</h3>
+    <div>ISBNコード：{{ book.isbn }}</div><br>
+    <div>{{ book.comment | safe | linebreaksbr }}</div><br><hr>
+{% endfor %}
+{% endblock %}

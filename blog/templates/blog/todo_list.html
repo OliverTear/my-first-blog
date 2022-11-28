@@ -1,0 +1,37 @@
+<h1>ToDo List of {{ username }}</h1>
+
+{% if tasks %}
+    <ul>
+    {% for task in tasks %}
+        <li>
+        <div style="display:inline-flex">
+            <form action="/task/update/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ task.id }}">
+                <input type="text" name="name" value="{{ task.name }}" required>
+                <input type="submit" value="update">
+            </form>
+            <form action="/task/delete/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ task.id }}">
+                <input type="submit" value="delete">
+            </form>
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No task is registered.</p>
+{% endif %}
+
+<form action="/task/create/" method="post">
+    {% csrf_token %}
+    New task:
+    <input type="text" name="name" required>
+    <input type="submit" value="add">
+</form>
+
+<form action="/logout/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="logout">
+</form>

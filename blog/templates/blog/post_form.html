@@ -1,0 +1,96 @@
+{% extends 'blog/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<form class = bookform>
+    <h2>本棚を作る</h2>
+    <br>
+    {{ form.as_p }}
+
+
+    <h2>本の追加</h2>
+    {{ formset.management_form }}
+
+    <table class="table table-striped">
+        <tbody class="books">
+        </tbody>
+    </table>
+
+    <input class="form-control" id="search-input-1" placeholder="ISBNコードを入力" type="text" name="search-key-isbn">
+    {% csrf_token %}
+    <a href="#" id="book-serch" class="btn btn-outline-secondary add-book">本を検索</a><br>
+    <p id="serch-warn" class="warn"></p>
+    <br><hr>
+    <h2 class="caption">本棚を作成する</h2>
+    <input class="btn btn-outline-dark" id="create" type="submit" formmethod="post" value="本棚の作成"><br>
+    <p id="create-warn" class="warn"></p><br><br><br>     
+</form>
+
+<script type="text/html" id="book-template">
+    <tr id="book-__prefix__">
+        <td class="align-middle rownum"></td>
+        <td>
+            {{ formset.empty_form.title }}
+            {{ formset.empty_form.isbn }}
+            {% bootstrap_field formset.empty_form.comment show_label=True %}
+            {% bootstrap_field formset.empty_form.DELETE show_label=False field_class="float-right" %}
+        </td>
+    </tr>
+</script>
+<script>
+    $(function () {
+        $('.add-book').click(function (e) {
+            e.preventDefault();
+            // 検索ワード取得
+            var v0 = document.getElementById('search-input-1').value;
+            // ISBNコード欄が空なら検索しない
+            if (v0 == ""){                
+                return;
+            }
+            var url = '/serch/' + v0 + "/"; // リクエスト先URL
+            const request = new XMLHttpRequest();
+            request.open('GET', url);
+            request.send(null);
+            request.onreadystatechange = function () {
+                if (request.readyState != 4) {
+                    // リクエスト中
+                } else if (request.status != 200) {
+                    document.getElementById("serch-warn").textContent = "見つかりませんでした";
+                    return;
+                    // 失敗
+                } else {
+                    // 取得成功
+                    var result = request.responseText;    
+                    try{                    
+                      // 値が取得できているかの確認
+                      var obj = JSON.parse(result);
+                      var tmp = obj.summary.title;
+                      // 本入力欄の追加
+                      var count = parseInt($('#id_book_set-TOTAL_FORMS').attr('value'), 10);
+                      var tmplMarkup = $('#book-template').html();
+                      var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);            
+                      $('tbody.books').append(compiledTmpl);
+                      $('#id_book_set-TOTAL_FORMS').attr('value', count + 1);
+
+                      // 本情報（タイトル、ISBNの入力）
+                      var tmp = "book_set-__prefix__-title";
+                      var tmp = tmp.replace(/__prefix__/g, count);
+                      document.getElementsByName(tmp)[0].value = obj.summary.title;
+                      var tmp = "book_set-__prefix__-isbn";
+                      var tmp = tmp.replace(/__prefix__/g, count);
+                      document.getElementsByName(tmp)[0].value = obj.summary.isbn;
+
+                      // 検索フォームを空に
+                      document.getElementById('search-input-1').value = "";
+                    }catch(error){
+                      // 失敗したらメッセージ表示
+                      document.getElementById("serch-warn").textContent = "見つかりませんでした";
+                      return;
+                    };
+                };
+            };
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="../static/css/blog.css">
+</head>
+
+<div class = "bg">
+        <form method="post", class = registerform>
+            <h1 class = REG1>Register</h1>
+            {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <div class = REG2>
+                <label for="username" class = "username">Username </label>
+                <input type="username" name="username" id="username" required>
+            </div>
+            <div class = REG3>
+                <label for="password" class = "password">Password </label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <div class = REG4>
+                <input type="submit" value="register" class =loginbutton>
+            </div>
+        </form>
+</div>

@@ -1,16 +1,47 @@
 {% extends 'blog/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
-    <div class="post">
-        {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
+<div class = detail>
+    <title>{% block title %}{{username}}{% endblock %}</title>
+    <h1>{{ bookshelf.title }}</h1>
+    <p>カテゴリ:{{ bookshelf.get_cat_display }}</p>
+    <p>制作者:{{ bookshelf.name }}</p>
+    <hr>
+    <h2>本一覧</h2><br>
+    {% for book in books %}
+        <h3>{{ book.title }}</h3>
+        <div>ISBNコード：{{ book.isbn }}</div><br>
+        <div>{{ book.comment | safe | linebreaksbr }}</div><br><hr>
+    {% endfor %}
+    
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-2">
+                <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#testModal">削除</button>
             </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        {% endif %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        </div>
     </div>
+</div>
+<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">削除確認画面</h4></h4>
+            </div>
+            <div class="modal-body">
+                <label>本棚”{{ bookshelf.title }}”を削除しますか？</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                <form action = "/delete/{{ bookshelf.pk }}/" method="get">
+                    {% csrf_token %}
+                    <div>
+                        <input type="submit" value="削除" class = reg>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

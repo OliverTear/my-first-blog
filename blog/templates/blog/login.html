@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" href="../static/css/blog.css">
+    <title>{% block title %}私の本棚{% endblock %}</title>
+</head>
+<div class = bg>
+    <form method="post" class = loginform>
+        <div class ='login_form_top'>
+            <h1 class = LOGIN1>Login</h1>
+            {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <div class="login_form_btm">
+                <div class = LOGIN2>
+                    <label for="username" class = "username">Username </label>
+                    <input type="username" name="username" id="username" required>
+                </div>
+                <div class = LOGIN3>
+                    <label for="password" class = "password">Password </label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <div class = LOGIN4>
+                    <input type="submit" value="login" class = loginbutton>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action = "/register/" method="get" class = regreg>
+        {% csrf_token %}
+        <div class = LOGIN5>
+            <input type="submit" value="Create an account" class = reg>
+        </div>
+    </form>
+</div>
+
+
+<!-- <p><a href="/register/" class = calink>Create an account</a></p> -->
