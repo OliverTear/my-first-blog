@@ -55,7 +55,7 @@
                 if (request.readyState != 4) {
                     // リクエスト中
                 } else if (request.status != 200) {
-                    document.getElementById("serch-warn").textContent = request.status;
+                    document.getElementById("serch-warn").textContent = url;
                     return;
                     // 失敗
                 } else {
