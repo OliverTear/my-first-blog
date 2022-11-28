@@ -136,7 +136,7 @@ def index(request: HttpRequest) -> HttpResponse:
     print("I am here!\n")
     return render(
         request,
-        'blog/login.html',
+        'blog/post_list.html',
         {'username': request.user.username, 'model': model}
     )
 
