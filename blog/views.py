@@ -155,7 +155,7 @@ def login_view(request: HttpRequest) -> HttpResponse:
         raise Http404('Username or password is not set.')
 
     user = authenticate(request, username=username, password=password)
-    print("I am here!\n")
+    print(username)
 
     if user is None:
         return render(request, 'blog/login.html', {'error_message': 'Incorrect username or password.'})
