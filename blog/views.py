@@ -128,16 +128,10 @@ def top(request):
     return render(request, 'blog/post_list.html', {'username': request.user.username})
 
 def index(request: HttpRequest) -> HttpResponse:
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect('login/')
-
-    # tasks = Bookshelf.objects.filter(name=request.user)
-    model = Bookshelf.objects.filter(name=request.user)
-    print("I am here!\n")
     return render(
         request,
-        'blog/post_list.html',
-        {'username': request.user.username, 'model': model}
+        'blog/login.html',
+       
     )
 
 
