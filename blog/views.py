@@ -6,8 +6,6 @@ from .forms import *
 from django.shortcuts import redirect
 from django.http import HttpResponse
 import requests
-import json
-from bs4 import BeautifulSoup
 from django.views.generic import ListView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.models import User
